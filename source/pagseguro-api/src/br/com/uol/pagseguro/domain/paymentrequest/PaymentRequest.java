@@ -20,6 +20,7 @@ package br.com.uol.pagseguro.domain.paymentrequest;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.ArrayList;
 
 import br.com.uol.pagseguro.domain.Credentials;
 import br.com.uol.pagseguro.domain.Item;
@@ -187,6 +188,9 @@ public class PaymentRequest {
      * @param quantity
      */
     public void addItem(String id, String description, BigDecimal amount, Integer quantity) {
+        if(this.getItems == null){
+          this.items = new ArrayList<PaymentRequestItem>();
+        }
         this.getItems().add(new PaymentRequestItem(id, description, amount, quantity));
     }
 
@@ -198,6 +202,9 @@ public class PaymentRequest {
      * @param item
      */
     public void addItem(PaymentRequestItem item) {
+        if(this.getItems == null){
+          this.items = new ArrayList<PaymentRequestItem>();
+        }
         this.getItems().add(item);
     }
 
